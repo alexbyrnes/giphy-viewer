@@ -1,10 +1,10 @@
 import { FETCH_POSTS, NEW_POST, SCROLL_POSTS, SEARCH } from './types';
 
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 10;
 let pageToLimitAndOffset = (p) => {
   const offset = p*PAGE_SIZE;
-  const limit = PAGE_SIZE;
+  const limit = p*PAGE_SIZE;
   return {limit, offset};
 };
 
