@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { scrollPosts } from '../actions/postActions';
 
 import Posts from './Posts';
+import store from '../store';
 
 class Scroller extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Scroller extends Component {
   onScroll(e) {
     const newPage = this.state.page + 1;
     this.setState({page: newPage});
-    this.props.scrollPosts(newPage);
+    this.props.scrollPosts(newPage, store.getState().posts.query);
   }
 
   render() {

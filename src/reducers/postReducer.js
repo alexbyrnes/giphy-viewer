@@ -1,8 +1,9 @@
-import { FETCH_POSTS, NEW_POST, SCROLL_POSTS } from '../actions/types';
+import { FETCH_POSTS, NEW_POST, SCROLL_POSTS, SEARCH } from '../actions/types';
 
 const initialState = {
   items: [],
   item: {},
+  query: null,
   page: 0
 }
 
@@ -21,6 +22,12 @@ export default function(state = initialState, action) {
     case SCROLL_POSTS:
       return {
         ...state,
+        page: action.page
+      };
+    case SEARCH:
+      return {
+        ...state,
+        query: action.query,
         page: action.page
       };
     default:
