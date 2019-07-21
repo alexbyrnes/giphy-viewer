@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST, SCROLL_POSTS } from './types';
+import { FETCH_POSTS, NEW_POST, SCROLL_POSTS, SEARCH } from './types';
 
 
 const PAGE_SIZE = 5;
@@ -8,9 +8,11 @@ let pageToLimitAndOffset = (p) => {
   return {limit, offset};
 };
 
-export const fetchPosts = (page = 0) => dispatch => {
+export const fetchPosts = (page = 0, query = null) => dispatch => {
   const {limit, offset} = pageToLimitAndOffset(page);
-  const api = `http://api.giphy.com/v1/gifs/trending?api_key=x02biVpdFnk2756xqcf1DYgZYPURZafp&limit=${limit}&offset=${offset}`;
+  const endpoint = query ? 'search' : 'trending';
+
+  const api = `http://api.giphy.com/v1/gifs/${endpoint}?api_key=x02biVpdFnk2756xqcf1DYgZYPURZafp&limit=${limit}&offset=${offset}&q=${query}`;
   fetch(api)
     .then(res => res.json())
     .then(posts =>
@@ -39,11 +41,20 @@ export const createPost = (postData) => dispatch => {
 
 };
 
-export const scrollPosts = (page) => dispatch => {
-  dispatch(fetchPosts(page));
+export const scrollPosts = (page, query) => dispatch => {
+  dispatch(fetchPosts(page, query));
   dispatch({
     type: SCROLL_POSTS,
     page: page
+  });
+};
+
+export const search = (query) => dispatch => {
+  dispatch(fetchPosts(0, query));
+  dispatch({
+    type: SEARCH,
+    query: query,
+    page: 0
   });
 };
 

@@ -4,7 +4,7 @@ import './App.css';
 import { Provider } from 'react-redux';
 
 import Scroller from './components/Scroller';
-import PostForm from './components/Postform';
+import Search from './components/Search';
 
 import store from './store';
 
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <PostForm />
+          <Search />
           <hr />
           <Scroller />
         </div>
