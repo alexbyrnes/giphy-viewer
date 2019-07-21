@@ -28,9 +28,9 @@ class Search extends Component {
   render () {
     return (
       <div>
+        <h1>Search GIFs</h1>
         <form onSubmit={this.onSubmit}>
           <div>
-            <label>Search: </label><br />
             <input type="text" name="query" onChange={this.onChange} value={this.state.query}/>
             <button type="submit">Submit</button>
           </div>
