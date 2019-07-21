@@ -22,9 +22,11 @@ class Scroller extends Component {
   }
 
   onScroll(e) {
+    /* TODO: conflicts with viewer
     const newPage = this.state.page + 1;
     this.setState({page: newPage});
     this.props.scrollPosts(newPage, store.getState().posts.query);
+    */
   }
 
   render() {
