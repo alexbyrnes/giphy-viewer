@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import './App.css';
-import { Provider } from 'react-redux';
+import './App.css'
+import { Provider } from 'react-redux'
 
-import Scroller from './components/Scroller';
-import Search from './components/Search';
+import Scroller from './components/Scroller'
+import Search from './components/Search'
 
-import store from './store';
+import store from './store'
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <Provider store={store}>
         <div className="App">
@@ -18,8 +18,8 @@ class App extends Component {
           <Scroller />
         </div>
       </Provider>
-    );
+    )
   }
 }
 
-export default App;
+export default App
