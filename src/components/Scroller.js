@@ -38,7 +38,6 @@ class Scroller extends Component {
   render() {
     return (
       <div onClick={this.onScroll} >
-      <h1>scroll</h1>
       <Posts />
       </div>
     )
