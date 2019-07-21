@@ -5,10 +5,6 @@ import { fetchPosts } from '../actions/postActions';
 
 class Posts extends Component {
 
-  componentWillMount() {
-    this.props.fetchPosts();
-  }
-
   componentWillReceiveProps(nextProps) {
     if(nextProps.newPost) {
       this.props.posts.unshift(nextProps.newPost);
