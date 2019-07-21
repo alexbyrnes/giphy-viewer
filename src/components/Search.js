@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { search } from '../actions/postActions';
 
-class PostForm extends Component {
+class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,8 +38,8 @@ class PostForm extends Component {
   }
 }
 
-PostForm.propTypes = {
+Search.propTypes = {
   search: PropTypes.func.isRequired
 }
 
-export default connect(null, { search })(PostForm);
+export default connect(null, { search })(Search);
