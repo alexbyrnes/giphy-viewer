@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/postActions';
 
+import Viewer from './Viewer';
+
 class Posts extends Component {
 
   componentWillReceiveProps(nextProps) {
@@ -10,12 +12,12 @@ class Posts extends Component {
       this.props.posts.unshift(nextProps.newPost);
     }
   }
-
   render() {
+
     const postItems = this.props.posts.map(post => (
       <div key={post.id}>
         <h3>{post.title}</h3>
-        <img src={post.images.fixed_height_still.url}></img>
+        <Viewer image={post.images.fixed_height_still.url}/>
       </div>
     ));
 
