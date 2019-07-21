@@ -22,7 +22,10 @@ class Posts extends Component {
     const postItems = this.props.posts.map(post => (
       <div key={post.id}>
         <h3>{post.title}</h3>
-        <Viewer image={post.images.fixed_height_still.url}/>
+        <Viewer
+          image={post.images.fixed_height_still.url}
+          title={post.title}
+        />
       </div>
     ));
 

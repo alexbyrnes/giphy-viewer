@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
  
 class Viewer extends Component {
@@ -18,11 +17,11 @@ class Viewer extends Component {
  
     return (
       <div>
-        <img src={this.props.image} onClick={() => this.setState({ isOpen: true })}/>
+        <img src={this.props.image} onClick={() => this.setState({ isOpen: true })} alt={this.props.title}/>
         {isOpen && (
-          <Lightbox mainSrc={this.props.image} 
-         onCloseRequest={() => this.setState({ isOpen: false })} 
-          
+          <Lightbox
+            mainSrc={this.props.image}
+            onCloseRequest={() => this.setState({ isOpen: false })}
           />
         )}
       </div>
