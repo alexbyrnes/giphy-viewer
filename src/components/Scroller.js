@@ -17,16 +17,22 @@ class Scroller extends Component {
     this.onScroll = this.onScroll.bind(this);
   }
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll);
+  }
+
   componentWillMount(){
     this.props.scrollPosts(this.state.page);
   }
 
   onScroll(e) {
-    /* TODO: conflicts with viewer
-    const newPage = this.state.page + 1;
-    this.setState({page: newPage});
-    this.props.scrollPosts(newPage, store.getState().posts.query);
-    */
+    // Is scrollbar at the bottom?
+    // If so, load more images
+    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+      const newPage = this.state.page + 1;
+      this.setState({page: newPage});
+      this.props.scrollPosts(newPage, store.getState().posts.query);
+    }
   }
 
   render() {
