@@ -24,7 +24,7 @@ class Posts extends Component {
       <div key={post.id}>
         <h3>{post.title}</h3>
         <Viewer
-          image={post.images.fixed_height_still.url}
+          image={post.images.fixed_height.url}
           title={post.title}
         />
       </div>
