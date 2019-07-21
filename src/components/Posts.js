@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/postActions';
+import store from '../store';
 
 import Viewer from './Viewer';
 
@@ -12,7 +13,11 @@ class Posts extends Component {
       this.props.posts.unshift(nextProps.newPost);
     }
   }
+
   render() {
+    const currentQuery = store.getState().posts.query;
+    const isSearch = currentQuery !== null;
+    const results = isSearch ? <h1>Results: {currentQuery}</h1> : <h1>Trending</h1>;
 
     const postItems = this.props.posts.map(post => (
       <div key={post.id}>
@@ -23,7 +28,7 @@ class Posts extends Component {
 
     return (
       <div>
-      <h1>Posts</h1>
+      {results}
       {postItems}
       </div>
     )
