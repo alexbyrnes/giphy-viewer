@@ -1,9 +1,17 @@
-import { FETCH_POSTS, NEW_POST } from './types';
+import { FETCH_POSTS, NEW_POST, SCROLL_POSTS } from './types';
 
 
-export const fetchPosts = () => dispatch => {
-  console.log('fetching...');
-  fetch('http://api.giphy.com/v1/gifs/trending?api_key=x02biVpdFnk2756xqcf1DYgZYPURZafp&limit=5')
+const PAGE_SIZE = 5;
+let pageToLimitAndOffset = (p) => {
+  const offset = p*PAGE_SIZE;
+  const limit = PAGE_SIZE;
+  return {limit, offset};
+};
+
+export const fetchPosts = (page = 0) => dispatch => {
+  const {limit, offset} = pageToLimitAndOffset(page);
+  const api = `http://api.giphy.com/v1/gifs/trending?api_key=x02biVpdFnk2756xqcf1DYgZYPURZafp&limit=${limit}&offset=${offset}`;
+  fetch(api)
     .then(res => res.json())
     .then(posts =>
       dispatch({
@@ -29,5 +37,13 @@ export const createPost = (postData) => dispatch => {
     })
   );
 
+};
+
+export const scrollPosts = (page) => dispatch => {
+  dispatch(fetchPosts(page));
+  dispatch({
+    type: SCROLL_POSTS,
+    page: page
+  });
 };
 
