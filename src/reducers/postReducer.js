@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST, SCROLL_POSTS, SEARCH } from '../actions/types';
+import { FETCH_POSTS, SCROLL_POSTS, SEARCH } from '../actions/types';
 
 const initialState = {
   items: [],
@@ -14,11 +14,6 @@ export default function(state = initialState, action) {
         ...state,
         items: action.payload
     };
-    case NEW_POST:
-      return {
-        ...state,
-        item: action.payload
-      };
     case SCROLL_POSTS:
       return {
         ...state,

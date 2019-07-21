@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST, SCROLL_POSTS, SEARCH } from './types';
+import { FETCH_POSTS, SCROLL_POSTS, SEARCH } from './types';
 
 
 const PAGE_SIZE = 10;
@@ -21,24 +21,6 @@ export const fetchPosts = (page = 0, query = null) => dispatch => {
         payload: posts.data
       })
     );
-};
-
-export const createPost = (postData) => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts', {
-
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(postData)
-  })
-  .then(res => res.json())
-  .then(post => dispatch({
-        type: NEW_POST,
-        payload: post
-    })
-  );
-
 };
 
 export const scrollPosts = (page, query) => dispatch => {
