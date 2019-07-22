@@ -1,24 +1,31 @@
-import { FETCH_POSTS, NEW_POST } from '../actions/types';
+import { FETCH_POSTS, SCROLL_POSTS, SEARCH } from '../actions/types'
 
 const initialState = {
   items: [],
-  item: {}
+  item: {},
+  query: null,
+  page: 0
 }
 
-export default function(state = initialState, action) {
-  switch(action.type) {
+export default function (state = initialState, action) {
+  switch (action.type) {
     case FETCH_POSTS:
       return {
         ...state,
         items: action.payload
-      };
-    case NEW_POST:
+      }
+    case SCROLL_POSTS:
       return {
         ...state,
-        item: action.payload
-      };
+        page: action.page
+      }
+    case SEARCH:
+      return {
+        ...state,
+        query: action.query,
+        page: action.page
+      }
     default:
-      return state;
-  
+      return state
   }
 }
