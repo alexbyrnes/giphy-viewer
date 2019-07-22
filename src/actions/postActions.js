@@ -12,7 +12,7 @@ export const fetchPosts = (page = 0, query = null) => dispatch => {
   const { limit, offset } = pageToLimitAndOffset(page)
   const endpoint = query ? 'search' : 'trending'
 
-  const api = `http://api.giphy.com/v1/gifs/${endpoint}?api_key=x02biVpdFnk2756xqcf1DYgZYPURZafp&limit=${limit}&offset=${offset}&q=${query}`
+  const api = `https://api.giphy.com/v1/gifs/${endpoint}?api_key=x02biVpdFnk2756xqcf1DYgZYPURZafp&limit=${limit}&offset=${offset}&q=${query}`
   fetch(api)
     .then(res => res.json())
     .then(posts =>
